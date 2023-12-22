@@ -1,6 +1,6 @@
 # Django Vue.js WebPage for HomeSystem control
 
-A Webapplication plus backend for checking temperature and humidity values of and controling smarthome devices from a database.
+A web-application plus backend for checking temperature and humidity values of smarthome devices from a database and possibly controlling them, we'll see how far this project goes.
 
 ## Installation
 
