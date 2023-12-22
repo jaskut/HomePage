@@ -18,6 +18,8 @@ Install required packages.
 pip install -r requirements.txt
 ```
 
+Add the necessary data in a .env file, like listed in .env.example.
+
 Run migrations.
 
 ```bash
