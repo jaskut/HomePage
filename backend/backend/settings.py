@@ -35,6 +35,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'devices.apps.DevicesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -82,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    'fritz': {
+    'data': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': str(os.getenv('FRITZ_DB_NAME')),
         'USER': str(os.getenv('FRITZ_DB_USER')),
@@ -90,6 +91,8 @@ DATABASES = {
         'HOST': str(os.getenv('FRITZ_DB_HOST')),
     }
 }
+
+DATABASE_ROUTERS = ["devices.dbrouter.DataRouter"]
 
 
 # Password validation
@@ -116,7 +119,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'CET'
 
 USE_I18N = True
 
