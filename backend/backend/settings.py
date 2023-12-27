@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 from dotenv import load_dotenv
 import os
+import json
 
 load_dotenv()
 
@@ -29,7 +30,7 @@ SECRET_KEY = 'django-insecure-!(kru!d+19m9%^))9*&+d)v^a)ak5c+ksb+b^^4xiis73b7+d^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = json.loads(os.getenv('ALLOWED_HOSTS'))
 
 
 # Application definition
@@ -88,10 +89,10 @@ DATABASES = {
     },
     'data': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': str(os.getenv('FRITZ_DB_NAME')),
-        'USER': str(os.getenv('FRITZ_DB_USER')),
-        'PASSWORD': str(os.getenv('FRITZ_DB_PASSWORD')),
-        'HOST': str(os.getenv('FRITZ_DB_HOST')),
+        'NAME': os.getenv('FRITZ_DB_NAME'),
+        'USER': os.getenv('FRITZ_DB_USER'),
+        'PASSWORD': os.getenv('FRITZ_DB_PASSWORD'),
+        'HOST': os.getenv('FRITZ_DB_HOST'),
     }
 }
 
