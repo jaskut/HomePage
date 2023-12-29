@@ -4,7 +4,8 @@ A web-application plus backend for checking temperature and humidity values of s
 
 ## Installation
 
-For the backend, first create a virtual environment.
+## Backend
+First create a virtual environment:
 
 ```bash
 cd backend
@@ -31,4 +32,36 @@ Start dev server.
 
 ```bash
 python manage.py runserver
+```
+
+## Frontend
+
+Install dependencies:
+```bash
+# npm
+npm install package.json
+# yarn
+yarn install package.json
+# pnpm
+pnpm install package.json
+```
+
+Run testing:
+```bash
+# npm
+npm run dev
+# yarn
+yarn run dev
+# pnpm
+pnpm dev
+```
+
+Production:
+```bash
+# npm
+npm run build
+# yarn
+yarn run build
+# pnpm
+pnpm build
 ```
