@@ -1,10 +1,11 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
+import Default from '@/layouts/default/Default.vue'
 
 const routes = [
   {
     path: '/',
-    component: () => import('@/layouts/default/Default.vue'),
+    component: Default,
     children: [
       {
         path: '',
@@ -16,6 +17,17 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/auth',
+    component: Default,
+    children: [
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import('@/views/auth/Login.vue'),
+      }
+    ]
+  }
 ]
 
 const router = createRouter({

@@ -1,6 +1,15 @@
 <template>
   <v-container class="fill-height">
     <v-responsive class="align-center text-center fill-height">
+      <v-btn
+        color="primary"
+        min-width="228"
+        size="x-large"
+        target="_blank"
+        variant="flat"
+        @click="logout"
+      >Log out
+      </v-btn>
       <v-img height="300" src="@/assets/logo.svg" />
 
       <div class="text-body-2 font-weight-light mb-n1">Welcome to</div>
@@ -71,5 +80,10 @@
 </template>
 
 <script setup lang="ts">
-  //
+  import { useAuthStore } from '@/store/auth';
+  const authStore = useAuthStore()
+
+  function logout() {
+    authStore.logout()
+  }
 </script>
