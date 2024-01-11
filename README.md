@@ -19,7 +19,7 @@ Install required packages.
 pip install -r requirements.txt
 ```
 
-Add the necessary data in a .env file, like listed in .env.example.
+Add the necessary data in a backend/.env file, like listed in .env.example.
 
 Run migrations.
 
@@ -45,6 +45,8 @@ yarn install package.json
 # pnpm
 pnpm install package.json
 ```
+
+Add the necessary data in a frontend/frontend/.env file, like listed in .env.example.
 
 Run testing:
 ```bash
