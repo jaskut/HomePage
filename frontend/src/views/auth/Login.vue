@@ -3,8 +3,8 @@
     <v-main>
       <v-container fluid class="fill-height">
         <v-layout class="align-center justify-center">
-          <v-col xs="12" sm="8" md="4">
-            <v-card class="elevation-12 ma-8">
+          <v-col xs="12" sm="8" md="5">
+            <v-card class="elevation-12 ma-sm-8">
                 <v-toolbar dark color="primary">
                   <v-toolbar-title>Login form</v-toolbar-title>
                 </v-toolbar>
@@ -52,7 +52,7 @@
 
   function login() {
     authStore.login(username.value, password.value)
-    router.push({ name: 'Home' })
+    router.push({ name: 'home' })
   }
 
   watch(
@@ -62,7 +62,7 @@
 
   function checkAuthentication(isAuthenticated: boolean) {
     if (isAuthenticated) {
-      router.push({ name: 'Home' })
+      router.push({ name: 'home' })
     }
   }
 

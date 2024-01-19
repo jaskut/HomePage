@@ -11,6 +11,8 @@ import 'vuetify/styles'
 // Composables
 import { createVuetify } from 'vuetify'
 
+import { VCard } from 'vuetify/components/VCard'
+
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
   theme: {
@@ -23,4 +25,14 @@ export default createVuetify({
       },
     },
   },
+
+  aliases: {
+    DeviceCard: VCard
+  },
+
+  defaults: {
+    DeviceCard: {
+      class: ['ma-4', 'elevation-12', 'rounded-lg']
+    }
+  }
 })

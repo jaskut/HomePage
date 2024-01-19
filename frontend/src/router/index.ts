@@ -6,21 +6,31 @@ import { useAuthStore } from '@/store/auth'
 const routes = [
   {
     path: '/',
-    component: Default,
+    component: () => import('@/layouts/HomeLayout.vue'),
     children: [
       {
-        path: '',
-        name: 'Home',
+        path: 'home',
+        name: 'home',
         // route level code-splitting
         // this generates a separate chunk (Home-[hash].js) for this route
         // which is lazy-loaded when the route is visited.
         component: () => import('@/views/Home.vue'),
       },
+      {
+        path: 'sensors',
+        name: 'allSensors',
+        component: () => import('@/views/main/AllSensors.vue')
+      },
+      {
+        path: 'actors',
+        name: 'allActors',
+        component: () => import('@/views/main/AllActors.vue')
+      },
     ],
   },
   {
     path: '/auth',
-    component: Default,
+    component: () => import('@/layouts/AuthLayout.vue'),
     children: [
       {
         path: 'login',
