@@ -4,11 +4,11 @@ import { tokenAuth, onDone } from '@/apollo/mutations'
 
 export const useAuthStore = defineStore('user', {
   state: () => ({
-    user: localStorage.getItem("user") || null,
+    user: null as string | null,
     token: localStorage.getItem("token") || null,
   }),
   getters: {
-    isAuthenticated: (state) => Boolean(state.token && state.user),
+    isAuthenticated: (state) => Boolean(state.token),
   },
   actions: {
     login(user: string, password: string) {
@@ -17,7 +17,6 @@ export const useAuthStore = defineStore('user', {
         this.user = user
         this.token = result.data.tokenAuth.token
 
-        localStorage.setItem("user", this.user)
         localStorage.setItem("token", this.token || '')
       })
     },
@@ -25,7 +24,6 @@ export const useAuthStore = defineStore('user', {
       this.user = null
       this.token = null
       
-      localStorage.removeItem("user")
       localStorage.removeItem("token")
     }
   }

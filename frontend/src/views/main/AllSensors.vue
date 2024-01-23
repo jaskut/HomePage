@@ -7,7 +7,7 @@
       v-for="sensor in result.allSensors"
       :sensor-id="Number(sensor.sensorId)"
       :name="sensor.name"
-      :factors="sensor.factors.split(',')"
+      :factors="sensor.factors"
     />
   </div>
   </v-main>

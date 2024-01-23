@@ -6,7 +6,6 @@
     prepend-icon="mdi-fan"
   >
     <v-card-text>
-      {{ location }}
       <v-switch
         v-model="state"
         inset
@@ -29,6 +28,12 @@ const props = defineProps<{
 const state = ref(true);
 
 function toggle(event:any) {
-  //state.value ? fetch(import.meta.env.VITE_DEVICE_CONTROL_URL + "on") : fetch(import.meta.env.VITE_DEVICE_CONTROL_URL + "off")
+  /*
+  fetch(import.meta.env.VITE_DEVICE_CONTROL_URL + (state.value ? "on" : "off"), {
+    method: 'GET',
+    headers: {
+      'authorization': `JWT ${localStorage.getItem('token')}`,
+    }
+  })*/
 }
 </script>
