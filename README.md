@@ -38,6 +38,8 @@ python manage.py runserver
 
 Install dependencies:
 ```bash
+cd frontend
+
 # npm
 npm install package.json
 # yarn

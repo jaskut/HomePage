@@ -6,7 +6,15 @@
     prepend-icon="mdi-access-point"
   >
     <v-card-text>
-      {{ location }}
+      <div>{{ location }}</div>
+      <div class="d-flex text-h4 text-medium-emphasis pb-2">
+        <b v-if="data?.temperature">{{ data?.temperature }}° </b>
+        <v-divider v-if="data?.humidity" vertical class="mx-3 border-opacity-50"/>
+        <b v-if="data?.humidity"> {{ data?.humidity }}% </b>
+        <v-divider v-if="data?.pressure" vertical class="mx-3 border-opacity-50"/>
+        <b v-if="data?.pressure">{{ data?.pressure }}hPa </b> 
+      </div>
+
       <v-icon
         v-for="factor in factors"
         :icon="icons[factor]"
@@ -17,10 +25,18 @@
 </template>
 
 <script lang="ts" setup>
+
+interface Data {
+  temperature: number;
+  humidity: number;
+  pressure: number;
+}
+
 const props = defineProps<{
   sensorId: number,
   name: string,
   location?: string,
+  data?: Data,
   factors: Array<string>,
 }>()
 

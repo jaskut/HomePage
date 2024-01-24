@@ -1,17 +1,17 @@
 <template>
-  <v-app>
-  <v-main>
   <div v-if="loading">Loading...</div>
-  <div v-else-if="result" class="d-flex align-content-start flex-wrap">
-    <sensor-card
-      v-for="sensor in result.allSensors"
-      :sensor-id="Number(sensor.sensorId)"
-      :name="sensor.name"
-      :factors="sensor.factors"
-    />
-  </div>
-  </v-main>
-  </v-app>
+  <v-container v-else-if="result">
+    <v-row>
+      <v-col cols="12" sm="6" md="4" xl="3" v-for="sensor in result.allSensors">
+        <sensor-card
+          :sensor-id="Number(sensor.sensorId)"
+          :name="sensor.name"
+          :factors="sensor.factors"
+          :data="sensor.lastData"
+        />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script lang="ts" setup>
@@ -20,5 +20,4 @@
   import SensorCard from '@/components/sensors/SensorCard.vue';
 
   const { result, loading, error } = useQuery(ALL_SENSORS)
-  const x = loading.value
 </script>
