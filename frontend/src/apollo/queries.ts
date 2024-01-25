@@ -10,3 +10,11 @@ export const ALL_SENSORS = gql`
     }
   }
 `
+
+export const FANSTATE = gql`
+query {
+  fanstate {
+    time, state, override
+  }
+}
+`

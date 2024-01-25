@@ -1,12 +1,13 @@
 <template>
   <v-app>
-  <v-layout class="rounded rounded-md">
+  <v-layout>
     <v-app-bar>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"/>
       <v-app-bar-title>HomePage</v-app-bar-title>
       <v-btn @click="logout">Log out</v-btn>
     </v-app-bar>
 
-    <v-navigation-drawer>
+    <v-navigation-drawer v-model="drawer">
       <v-list nav>
         <v-list-item 
           v-for="(item, i) in items" 
@@ -25,6 +26,7 @@
 </template>
 
 <script lang="ts" setup>
+  import { ref } from 'vue'
   import router from '@/router';
   import { useAuthStore } from '@/store/auth';
 
@@ -35,6 +37,8 @@
     {text: 'Sensors', to: '/sensors'},
     {text: 'Actors', to: '/actors'},
   ]
+
+  const drawer = ref()
 
   function logout() {
     authStore.logout()

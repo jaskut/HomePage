@@ -3,7 +3,7 @@
     <v-main>
       <v-container fluid class="fill-height">
         <v-layout class="align-center justify-center">
-          <v-col xs="12" sm="8" md="5">
+          <v-col xs="12" sm="8" md="5" lg="4" xl="3">
             <v-card class="elevation-12 ma-sm-8">
                 <v-toolbar dark color="primary">
                   <v-toolbar-title>Login form</v-toolbar-title>
