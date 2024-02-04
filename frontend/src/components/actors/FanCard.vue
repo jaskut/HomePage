@@ -45,25 +45,26 @@ const state = ref();
 const override = ref();
 
 function control(event:any) {
-  /*
   fetch(import.meta.env.VITE_DEVICE_CONTROL_URL + (state.value ? "on" : "off"), {
     method: 'GET',
     headers: {
       'authorization': `JWT ${localStorage.getItem('token')}`,
     }
-  })*/
+  }).then(() => refetch())
 }
 
 function manual(event:any) {
-  if (!override) {
+  if (!override.value) {
     fetch(import.meta.env.VITE_DEVICE_CONTROL_URL + "reset", {
       method: 'GET',
       headers: { 'authorization': `JWT ${localStorage.getItem('token')}` }
-    })
+    }).then(() => refetch())
+  } else {
+    control(null)
   }
 }
 
-const { result, loading, error, onResult } = useQuery(FANSTATE)
+const { result, loading, error, onResult, refetch } = useQuery(FANSTATE)
 
 onResult(queryResult => {
   state.value = queryResult.data?.fanstate.state > 0;

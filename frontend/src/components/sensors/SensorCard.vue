@@ -11,8 +11,6 @@
         <b v-if="data?.temperature">{{ data?.temperature }}° </b>
         <v-divider v-if="data?.humidity" vertical class="mx-3 border-opacity-50"/>
         <b v-if="data?.humidity"> {{ data?.humidity }}% </b>
-        <v-divider v-if="data?.pressure" vertical class="mx-3 border-opacity-50"/>
-        <b v-if="data?.pressure">{{ data?.pressure }}hPa </b> 
       </div>
 
       <v-icon
