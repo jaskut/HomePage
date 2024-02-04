@@ -17,5 +17,5 @@
 </template>
 
 <script lang="ts" setup>
-  import FanCard from '@/components/actors/FanCard.vue';
+  import FanCard from '@/components/actuators/FanCard.vue';
 </script>
