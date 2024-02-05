@@ -35,7 +35,7 @@
   const items = [
     {text: 'Home', to: '/home'},
     {text: 'Sensors', to: '/sensors'},
-    {text: 'Actors', to: '/actors'},
+    {text: 'Actuators', to: '/actuators'},
   ]
 
   const drawer = ref()

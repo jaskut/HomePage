@@ -4,7 +4,7 @@ import apolloClient from '.';
 
 provideApolloClient(apolloClient)
 
-export const { mutate: tokenAuth, onDone } = useMutation(gql`
+export const tokenAuth = useMutation(gql`
   mutation ($username: String!, $password: String!) {
     tokenAuth(username: $username, password: $password) {
       token

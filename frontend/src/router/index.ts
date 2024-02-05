@@ -22,9 +22,9 @@ const routes = [
         component: () => import('@/views/main/AllSensors.vue')
       },
       {
-        path: 'actors',
-        name: 'allActors',
-        component: () => import('@/views/main/AllActors.vue')
+        path: 'actuators',
+        name: 'allActuators',
+        component: () => import('@/views/main/AllActuators.vue')
       },
     ],
   },

@@ -21,13 +21,22 @@
                       
                       <v-text-field
                         v-model="password"
+                        :error-messages="errorMessage"
                         name="password"
                         label="Password"
                         type="password"
                         placeholder="password"
                         required
                       ></v-text-field>
-                      <v-btn type="submit" class="mt-4" color="primary" value="log in">Login</v-btn>
+                      <v-btn 
+                        type="submit" 
+                        :disabled="loading"
+                        :loading="loading"
+                        class="mt-4" 
+                        color="primary" 
+                        value="log in">
+                        Login
+                      </v-btn>
                 </form>
                 </v-card-text>
             </v-card>
@@ -50,21 +59,20 @@
 
   const authStore = useAuthStore()
 
+  const loading = ref()
+  const errorMessage = ref('')
+
   function login() {
-    authStore.login(username.value, password.value)
+    loading.value = true
+    const { onDone, onError } = authStore.login(username.value, password.value)
+    onDone(() => router.push({ name: 'home' }))
+    onError(error => {
+      loading.value = false
+      errorMessage.value = error.message
+    })
+  }
+
+  if (authStore.isAuthenticated) {
     router.push({ name: 'home' })
   }
-
-  watch(
-    () => authStore.isAuthenticated, 
-    (isAuthenticated) => checkAuthentication(isAuthenticated)
-  )
-
-  function checkAuthentication(isAuthenticated: boolean) {
-    if (isAuthenticated) {
-      router.push({ name: 'home' })
-    }
-  }
-
-  checkAuthentication(authStore.isAuthenticated)
 </script>
