@@ -1,6 +1,6 @@
 // Utilities
 import { defineStore } from 'pinia'
-import { tokenAuth, onDone } from '@/apollo/mutations'
+import { tokenAuth } from '@/apollo/mutations'
 
 export const useAuthStore = defineStore('user', {
   state: () => ({
@@ -12,13 +12,14 @@ export const useAuthStore = defineStore('user', {
   },
   actions: {
     login(user: string, password: string) {
-      tokenAuth({ username: user, password: password })
-      onDone(result => {
+      tokenAuth.mutate({ username: user, password: password })
+      tokenAuth.onDone(result => {
         this.user = user
         this.token = result.data.tokenAuth.token
 
         localStorage.setItem("token", this.token || '')
       })
+      return tokenAuth
     },
     logout() {
       this.user = null
