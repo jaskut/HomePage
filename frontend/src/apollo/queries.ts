@@ -29,3 +29,11 @@ query ($id: Int!) {
   }
 }
 `
+
+export const DATA_BY_SENSOR = gql`
+query ($id: Int!, $n_minutes: Int!) {
+  dataBySensor(sensor: $id, nMinutes: $n_minutes) {
+    time, temperature, humidity, pressure
+  }
+}
+`

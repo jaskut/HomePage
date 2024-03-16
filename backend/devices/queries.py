@@ -34,7 +34,7 @@ class Query(graphene.ObjectType):
 
     @login_required
     def resolve_data_by_sensor(root, info, sensor, n_minutes):
-        time = datetime.datetime.now() - datetime.timedelta(minutes = n_minutes-60)
+        time = datetime.datetime.now() - datetime.timedelta(minutes = n_minutes)
         return (
             models.Data.objects.filter(sensor=sensor, time__gte=time)
         )
