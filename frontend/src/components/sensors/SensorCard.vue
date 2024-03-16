@@ -1,10 +1,16 @@
 <template>
   <device-card
-    max-width="344"
     :title="name"
     subtitle="Sensor"
     prepend-icon="mdi-access-point"
   >
+    <template v-slot:append>
+      <v-icon
+        v-for="factor in factors"
+        :icon="icons[factor]"
+        size="40"
+      />
+    </template>
     <v-card-text>
       <div>{{ location }}</div>
       <div class="d-flex text-h4 text-medium-emphasis pb-2">
@@ -12,12 +18,10 @@
         <v-divider v-if="data?.humidity" vertical class="mx-3 border-opacity-50"/>
         <b v-if="data?.humidity"> {{ data?.humidity }}% </b>
       </div>
-
-      <v-icon
-        v-for="factor in factors"
-        :icon="icons[factor]"
-        size="40"
-      />
+      
+      <div class="pt-2">
+        <slot/>
+      </div>
     </v-card-text>
   </device-card>
 </template>

@@ -8,6 +8,7 @@
           :name="sensor.name"
           :factors="sensor.factors"
           :data="sensor.lastData"
+          @click="router.push({ name: 'sensor', params: { id: Number(sensor.sensorId) }})"
         />
       </v-col>
     </v-row>
@@ -18,6 +19,10 @@
   import { ALL_SENSORS } from '@/apollo/queries'
   import { useQuery } from '@vue/apollo-composable'
   import SensorCard from '@/components/sensors/SensorCard.vue';
+
+  import { useRouter } from 'vue-router'
+
+  const router = useRouter()
 
   const { result, loading, error } = useQuery(ALL_SENSORS)
 </script>

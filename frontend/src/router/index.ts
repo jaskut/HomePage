@@ -18,8 +18,21 @@ const routes = [
       },
       {
         path: 'sensors',
-        name: 'allSensors',
-        component: () => import('@/views/main/AllSensors.vue')
+        name: 'sensors',
+        redirect: { name: 'allSensors' },
+        children: [
+          {
+            path: 'all',
+            name: 'allSensors',
+            component: () => import('@/views/main/AllSensors.vue')
+          },
+          {
+            path: ':id',
+            name: 'sensor',
+            component: () => import('@/views/main/SensorDetail.vue'),
+            props: true
+          }
+        ]
       },
       {
         path: 'actuators',

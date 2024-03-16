@@ -18,3 +18,14 @@ query {
   }
 }
 `
+
+export const SENSOR = gql`
+query ($id: Int!) {
+  sensor(id: $id) {
+    sensorId, name, location, factors,
+    lastData {
+      temperature, humidity, pressure
+    }
+  }
+}
+`
