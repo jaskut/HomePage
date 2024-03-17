@@ -39,6 +39,7 @@ const data = ref({labels: [] as string[], datasets: [] as any[]})
 const chosenTimeOption = ref(120)
 const timeOptions = ref([
   {text: "2 hours", value: 120},
+  {text: "6 hours", value: 6*60},
   {text: "1 day", value: 24*60},
   {text: "1 week", value: 7*24*60},
   {text: "1 month", value: 31*24*60},

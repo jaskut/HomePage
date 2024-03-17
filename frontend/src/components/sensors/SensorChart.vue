@@ -6,7 +6,6 @@
 </template>
 
 <script lang="ts" setup>
-  import { watch } from 'vue'
   import Line from '@/components/charts/Line.vue'
   import 'chartjs-adapter-date-fns'
   
