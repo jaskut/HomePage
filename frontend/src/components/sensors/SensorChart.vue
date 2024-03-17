@@ -6,11 +6,9 @@
 </template>
 
 <script lang="ts" setup>
-  import { Line } from 'vue-chartjs'
-  import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale } from 'chart.js'
+  import { watch } from 'vue'
+  import Line from '@/components/charts/Line.vue'
   import 'chartjs-adapter-date-fns'
-  
-  ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale)
   
   const props = withDefaults(
     defineProps<{
@@ -24,17 +22,24 @@
       options: () => ({
         responsive: true, 
         lineTension: 0.3,
+        elements:{
+          point:{
+            borderWidth: 0,
+            radius: 10,
+            backgroundColor: 'rgba(0,0,0,0)'
+          }
+        },
         scales: {
           x: {
             type: 'time',
             time: {
-              unit: 'hour',
               displayFormats: {
-                hour: 'HH:mm'
+                hour: 'HH:mm',
+                minute: 'HH:mm'
               },
             }
           },
-          temp: {
+          y: {
             type: 'linear',
             display: true,
             side: 'left'
@@ -56,5 +61,4 @@
       })
     },
   )
-
 </script>
