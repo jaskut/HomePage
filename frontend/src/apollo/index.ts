@@ -1,6 +1,7 @@
 import { ApolloClient, InMemoryCache, HttpLink, ApolloLink, concat } from '@apollo/client/core'
 
-const httpLink = new HttpLink({ uri: import.meta.env.VITE_GRAPHQL_URL });
+const url = import.meta.env.VITE_GRAPHQL_URL_LAN.includes(location.host) ? import.meta.env.VITE_GRAPHQL_URL_LAN : import.meta.env.VITE_GRAPHQL_URL
+const httpLink = new HttpLink({ uri: url });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext(({ headers = {} }) => ({

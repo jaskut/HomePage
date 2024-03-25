@@ -43,9 +43,10 @@ const props = defineProps<{
 
 const state = ref();
 const override = ref();
+const url = import.meta.env.VITE_DEVICE_CONTROL_URL_LAN.includes(location.host) ? import.meta.env.VITE_DEVICE_CONTROL_URL_LAN : import.meta.env.VITE_DEVICE_CONTROL_URL
 
 function control(event:any) {
-  fetch(import.meta.env.VITE_DEVICE_CONTROL_URL + (state.value ? "on" : "off"), {
+  fetch(url + (state.value ? "on" : "off"), {
     method: 'GET',
     headers: {
       'authorization': `JWT ${localStorage.getItem('token')}`,
@@ -55,7 +56,7 @@ function control(event:any) {
 
 function manual(event:any) {
   if (!override.value) {
-    fetch(import.meta.env.VITE_DEVICE_CONTROL_URL + "reset", {
+    fetch(url + "reset", {
       method: 'GET',
       headers: { 'authorization': `JWT ${localStorage.getItem('token')}` }
     }).then(() => refetch())
