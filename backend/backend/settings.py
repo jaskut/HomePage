@@ -149,7 +149,7 @@ GRAPHENE = {
     ],
 }
 
-CORS_ALLOWED_ORIGINS = json.loads(os.getenv('CORS_ORIGIN_WHITELIST'))
+CORS_ALLOWED_ORIGINS = json.loads(os.getenv('CORS_ALLOWED_ORIGINS'))
 
 # Auth Backends
 
