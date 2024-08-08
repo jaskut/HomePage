@@ -38,7 +38,7 @@ ALLOWED_HOSTS = json.loads(os.getenv('ALLOWED_HOSTS'))
 INSTALLED_APPS = [
     'devices.apps.DevicesConfig',
     'graphene_django',
-    "corsheaders",
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -149,9 +149,7 @@ GRAPHENE = {
     ],
 }
 
-CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = json.loads(os.getenv('CORS_ORIGIN_WHITELIST'))
-
+CORS_ALLOWED_ORIGINS = json.loads(os.getenv('CORS_ORIGIN_WHITELIST'))
 
 # Auth Backends
 
